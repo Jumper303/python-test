@@ -1,9 +1,6 @@
 {
-  "browser": "chrome",
-  "headless_mode": false,
   "base_url": "http://localhost:3000",
-  "timeout": 10,
-  "chromedriver" : "./chromedriver.exe",
+  "chromedriver" : "../chromedriver.exe",
   "username" : "Katharina_Bernier",
   "password" : "s3cret"
 }

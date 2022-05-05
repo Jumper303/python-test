@@ -11,9 +11,9 @@ def config():
 
 @pytest.fixture(autouse=True, scope='function')
 def setup(request, config):
-    # before
-    request.cls.driver = webdriver.Chrome('../chromedriver.exe')
+    # before test
+    request.cls.driver = webdriver.Chrome(config["chromedriver"])
     request.cls.config = config
     yield
-    # after
+    # after test
     request.cls.driver.close()

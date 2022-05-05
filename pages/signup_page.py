@@ -8,9 +8,9 @@ class SignUpPage(PageBase):
     def open_page(self):
         self.driver.get(self.config["base_url"] + "/signup")
 
-    def register_user(self, firstName, lastName, username, password, confirmPassword):
-        self.type("firstName", firstName)
-        self.type("lastName", lastName)
+    def register_user(self, first_name, last_name, username, password, confirm_password):
+        self.type("firstName", first_name)
+        self.type("lastName", last_name)
         self.type("username", username)
         self.type("password", password)
-        self.type("confirmPassword", confirmPassword)
+        self.type("confirmPassword", confirm_password)
