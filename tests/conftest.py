@@ -1,7 +1,9 @@
 import pytest
 import json
 from selenium import webdriver
-from os.path import exists
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
+from helpers.webdriver_listener import WebDriverListener
 
 CONFIG_PATH = "../config.json"
 
@@ -17,11 +19,11 @@ def setup(request, config):
     options.add_argument("start-maximized")
     if config["headless"]:
         options.add_argument("--headless")
-    if "chromedriver" in config and exists(config["chromedriver"]):
-        request.cls.driver = webdriver.Chrome(config["chromedriver"], options=options)
-        request.cls.config = config
-    else:
-        raise Exception("chromedriver location is not set or not found")
+    request.cls.driver = EventFiringWebDriver(
+        webdriver.Chrome(ChromeDriverManager().install(), options=options),
+        WebDriverListener()
+    )
+    request.cls.config = config
     yield
     # after test
     request.cls.driver.close()

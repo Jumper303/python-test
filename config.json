@@ -1,7 +1,6 @@
 {
   "base_url": "http://localhost:3000",
   "headless" : true,
-  "chromedriver" : "../chromedriver.exe",
   "username" : "Katharina_Bernier",
   "password" : "s3cret"
 }
